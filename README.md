@@ -7,7 +7,7 @@ Claude Code Skills for Chinese legal document drafting (中国法律文书撰写
 | Skill | Description | Status |
 |-------|-------------|--------|
 | [dabianzhuan](./dabianzhuan/) | 民事答辩状撰写全流程工作助手 | ✅ Available |
-| hetong-shencha | 合同审查助手 | 🚧 Planned |
+| [hetong-shencha](./hetong-shencha/) | 合同审查助手 | ✅ Available |
 | qisuzhuang | 民事起诉状撰写助手 | 🚧 Planned |
 | falv-yijianshu | 项目法律意见书撰写助手 | 🚧 Planned |
 

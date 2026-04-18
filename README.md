@@ -163,8 +163,4 @@ ln -s $(pwd)/legal-document-assistant/falv-yijianshu ~/.claude/skills/falv-yijia
 
 > 合同审查（hetong-shencha）是例外：它直接读取 .docx 并在原文上生成 Word 批注，因为合同审查的工作方式就是在原件上标注。
 
----
 
-## License
-
-MIT

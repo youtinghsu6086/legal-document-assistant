@@ -45,7 +45,7 @@
 
 ### 5. 未完待续...
 
-以上是目前已有和规划中的 Skill。如果你在执业中有其他高频文书需求（如仲裁申请书、律师函、尽职调查报告等），或者对现有 Skill 有改进建议，欢迎通过 [Issues](https://github.com/youtinghsu6086/legal-document-assistant/issues) 告诉我，我来尝试做出来。
+以上是目前已有和规划中的 Skill。如果你在执业中有其他高频文书需求（如仲裁申请书、律师函、尽职调查报告等），或者对现有 Skill 有改进建议，欢迎通过 [Issues](https://github.com/youtinghsu6086/legal-document-assistant/issues) 与我交流。
 
 ---
 

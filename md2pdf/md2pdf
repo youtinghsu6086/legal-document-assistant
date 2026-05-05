@@ -1,0 +1,61 @@
+#!/bin/bash
+# md2pdf: Convert a Markdown file to PDF (Chinese-friendly)
+# Usage: md2pdf <文件.md>
+
+set -e
+
+if [ -z "$1" ]; then
+  echo "用法: md2pdf <文件.md>"
+  echo "示例: md2pdf 答辩稿.md"
+  exit 1
+fi
+
+INPUT="$1"
+
+if [ ! -f "$INPUT" ]; then
+  echo "找不到文件: $INPUT"
+  exit 1
+fi
+
+BASE="${INPUT%.md}"
+HTML="${BASE}.html"
+PDF="${BASE}.pdf"
+
+CSS=$(mktemp -t md2pdf.XXXXXX.css)
+cat > "$CSS" <<'EOF'
+body {
+  font-family: "PingFang SC", "Heiti SC", "Microsoft YaHei", sans-serif;
+  font-size: 12pt;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
+  color: #222;
+}
+h1, h2, h3, h4 { font-weight: 600; margin-top: 1.5em; }
+h1 { font-size: 20pt; text-align: center; }
+h2 { font-size: 16pt; border-bottom: 1px solid #ddd; padding-bottom: 4px; }
+h3 { font-size: 14pt; }
+p { text-indent: 2em; margin: 0.6em 0; }
+li p { text-indent: 0; }
+blockquote { border-left: 3px solid #999; padding-left: 12px; color: #555; }
+code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; font-size: 90%; }
+pre { background: #f4f4f4; padding: 12px; border-radius: 4px; overflow-x: auto; }
+table { border-collapse: collapse; }
+th, td { border: 1px solid #999; padding: 4px 8px; }
+EOF
+
+echo "▶ 正在转换: $INPUT"
+
+pandoc "$INPUT" -o "$HTML" --standalone --metadata title="$(basename "$BASE")" -c "$CSS"
+
+ABS_HTML="$(cd "$(dirname "$HTML")" && pwd)/$(basename "$HTML")"
+
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --disable-gpu --no-pdf-header-footer \
+  --print-to-pdf="$PDF" \
+  "file://$ABS_HTML" 2>/dev/null
+
+rm -f "$HTML" "$CSS"
+
+echo "✓ 完成: $PDF"

@@ -54,7 +54,7 @@
 
 ### 未完待续...
 
-以上是目前已有和规划中的 Skill。如果你在执业中有其他高频文书需求（如仲裁申请书、律师函、尽职调查报告、委托代理后案件分析等），或者对现有 Skill 有改进建议，欢迎通过 [Issues](https://github.com/youtinghsu6086/legal-document-assistant/issues) 与我交流。
+以上是目前已有和规划中的 Skill。如果你在执业中有其他高频文书需求（如仲裁申请书、律师函、尽职调查报告、委托代理后案件分析等），或者对现有 Skill 有改进建议，欢迎通过 [Issues](https://github.com/fayayy888/legal-document-assistant/issues) 与我交流。
 
 ---
 
@@ -160,7 +160,7 @@ MCP 工具的安装方式因工具而异，可在 Claude Code 中直接询问安
 
 ```bash
 # 1. 克隆本仓库到本地
-git clone https://github.com/youtinghsu6086/legal-document-assistant.git
+git clone https://github.com/fayayy888/legal-document-assistant.git
 
 # 2. 将需要的 Skill 软链接到 Claude Code 的 skills 目录
 ln -s $(pwd)/legal-document-assistant/dabianzhuan ~/.claude/skills/dabianzhuan

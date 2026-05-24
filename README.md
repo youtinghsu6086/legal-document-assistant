@@ -52,6 +52,14 @@
 
 输出结构化案件分析报告，回答三个核心问题：能不能接？怎么打？风险在哪里？
 
+### 6. [案例检索 `anli-jiansuo`](./anli-jiansuo/)　✅ 🆕
+
+针对案件中需要案例支撑的法律观点，通过案例数据库进行语义检索，生成结构化的案例检索报告。六个步骤：
+
+阅读案件材料 → 梳理待证观点（律师确认） → 设计多角度检索策略 → 执行语义检索 → 筛选与排序 → 生成检索报告
+
+Skill 本身不绑定特定数据库，目前已验证支持 [北大法宝](https://www.pkulaw.com) 的 MCP 案例检索 API。详细接入方式见 [anli-jiansuo/README.md](./anli-jiansuo/README.md)。
+
 ### 未完待续...
 
 以上是目前已有和规划中的 Skill。如果你在执业中有其他高频文书需求（如仲裁申请书、律师函、尽职调查报告、委托代理后案件分析等），或者对现有 Skill 有改进建议，欢迎通过 [Issues](https://github.com/fayayy888/legal-document-assistant/issues) 与我交流。
@@ -130,6 +138,10 @@ md2pdf /path/to/文件.md
 
 其他 Skill（答辩状、法律意见书、委托代理前案件分析）无需额外依赖。
 
+### 案例检索 Skill 的额外依赖
+
+案例检索（anli-jiansuo）需要接入一个案例数据库。目前已验证支持北大法宝的 MCP 案例检索 API，需要在 [法宝 MCP 控制台](https://mcp.pkulaw.com) 注册并获取 API Token。详细接入方式见 [anli-jiansuo/README.md](./anli-jiansuo/README.md)。
+
 ### md2pdf 的额外依赖
 
 md2pdf 依赖 `pandoc` 和 Google Chrome。安装方式：
@@ -148,6 +160,7 @@ MCP（Model Context Protocol）是让 AI 工具调用外部能力的协议。以
 | MCP 工具 | 用途 | 对应 Skill |
 |----------|------|-----------|
 | 网页搜索类（如 Firecrawl、Tavily） | 在线检索法律法规，验证法条是否现行有效 | 答辩状、法律意见书、委托代理前案件分析 |
+| [北大法宝 MCP](https://mcp.pkulaw.com) | 语义检索司法案例 | 案例检索 |
 | 文件系统类 | 读写本地文件（Claude Code 自带，无需额外安装） | 全部 |
 
 MCP 工具的安装方式因工具而异，可在 Claude Code 中直接询问安装步骤。
@@ -166,12 +179,14 @@ git clone https://github.com/fayayy888/legal-document-assistant.git
 ln -s $(pwd)/legal-document-assistant/dabianzhuan ~/.claude/skills/dabianzhuan
 ln -s $(pwd)/legal-document-assistant/hetong-shencha ~/.claude/skills/hetong-shencha
 ln -s $(pwd)/legal-document-assistant/falv-yijianshu ~/.claude/skills/falv-yijianshu
+ln -s $(pwd)/legal-document-assistant/anli-jiansuo ~/.claude/skills/anli-jiansuo
 ```
 
 安装完成后，在 Claude Code 中正常对话即可。例如：
 - 粘贴一份起诉状，说"请帮我写答辩状"→ 自动触发答辩状 Skill
 - 说"请审查这份合同"并提供 .docx 文件 → 自动触发合同审查 Skill
 - 说"我们公司要做一个XX项目，请出具法律意见书"→ 自动触发法律意见书 Skill
+- 提供案件材料，说"帮我检索案例"→ 自动触发案例检索 Skill（需先接入北大法宝等案例数据库）
 
 ### 方式二：复制提示词到任意 AI 工具
 

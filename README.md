@@ -60,6 +60,14 @@
 
 Skill 本身不绑定特定数据库，目前已验证支持 [北大法宝](https://www.pkulaw.com) 的 MCP 案例检索 API。详细接入方式见 [anli-jiansuo/README.md](./anli-jiansuo/README.md)。
 
+### 7. [常法服务 `changfa-fuwu`](./changfa-fuwu/)　✅ 🆕
+
+面向常年法律顾问日常业务的技能套件，把服务一个常法客户全生命周期所需的技能打包在一起。装好先跑一次冷启动建档，之后各技能都按你的标准、按每个客户的档案工作。
+
+冷启动（律师建档、新客户建档） + 业务技能（合同审查、项目支持、委托续约检查、审查复盘） + 共享底层（律师档案、审查引擎、模块化审查清单）
+
+引擎与客户信息分离：改一次审查逻辑所有客户生效，加一个客户建一份档案即可开工。技能本身是工具无关的 markdown 指令文件，在 Claude Code 里可作为插件安装，内容也可供 Codex 等使用。详细说明见 [changfa-fuwu/README.md](./changfa-fuwu/README.md)。
+
 ### 未完待续...
 
 以上是目前已有和规划中的 Skill。如果你在执业中有其他高频文书需求（如仲裁申请书、律师函、尽职调查报告、委托代理后案件分析等），或者对现有 Skill 有改进建议，欢迎通过 [Issues](https://github.com/fayayy888/legal-document-assistant/issues) 与我交流。
